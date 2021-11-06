@@ -1,14 +1,19 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { addTodoRouter } from './routes/addTodo';
+import { getTodoRouter } from './routes/getTodoRouter';
 
 const port = process.env.PORT || 3000;
 const mongodbPassword = process.env.MONGO_DB_PASSWORD;
 
 const app = express();
+app.use(express.json());
+app.use('/todo/add', addTodoRouter);
+app.use('/todo', getTodoRouter);
 
 const runServer = async () => {
   try {
-    const mongoUrl = `mongodb+srv://pilat:${mongodbPassword}@cluster0.ws3ya.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+    const mongoUrl = `mongodb+srv://pilat:${mongodbPassword}@cluster0.ws3ya.mongodb.net/todo?retryWrites=true&w=majority`;
     const mongoConnection = await mongoose.connect(mongoUrl, {
       appName: 'mongodb',
     });
