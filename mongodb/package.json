@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "node --experimental-specifier-resolution=node ./build/server/server.js",
+    "start": "yarn build && node --experimental-specifier-resolution=node ./build/server.js",
     "debug": "env $(cat .env) nodemon --inspect ./src/server.ts"
   },
   "dependencies": {
