@@ -11,6 +11,10 @@ app.use(express.json());
 app.use('/todo/add', addTodoRouter);
 app.use('/todo', getTodoRouter);
 
+app.use((_, res, next) => {
+  res.sendStatus(404);
+  next();
+});
 const runServer = async () => {
   try {
     const mongoUrl = `mongodb+srv://pilat:${mongodbPassword}@cluster0.ws3ya.mongodb.net/todo?retryWrites=true&w=majority`;
