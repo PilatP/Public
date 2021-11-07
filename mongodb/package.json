@@ -6,7 +6,7 @@
   "author": "Abramov Alexey",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "./node_modules/.bin/tsc",
     "start": "yarn build && node --experimental-specifier-resolution=node ./build/server.js",
     "debug": "env $(cat .env) nodemon --inspect ./src/server.ts"
   },
